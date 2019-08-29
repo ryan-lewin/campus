@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('general.home');
+});
+
+Route::get('/users', function () {
+    return view('general.users');
+});
+
+Route::get('/recent', function () {
+    return view('general.recent');
 });
