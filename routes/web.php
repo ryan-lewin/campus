@@ -11,14 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('general.home');
-});
+Route::resource('/', 'PostsController');
 
-Route::get('/users', function () {
-    return view('general.users');
-});
+Route::get('/users', 'ViewsController@users');
 
-Route::get('/recent', function () {
-    return view('general.recent');
-});
+Route::get('/recent', 'ViewsController@recent');
