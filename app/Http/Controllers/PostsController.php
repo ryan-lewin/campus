@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -13,7 +14,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('general.home');
+        $sql = 'SELECT * FROM Posts';
+        $posts = DB::SELECT($sql);
+        return view('general.home', compact('posts'));
     }
 
     /**
@@ -23,7 +26,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        dd('test create');
     }
 
     /**
@@ -34,7 +37,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $postTitle = request('PostTitle');
+        $username = request('Username');
+        $postContent = request('PostContent');
+        $date = date('d-m-y');
+        $sql = 'INSERT INTO Posts(PostTitle, Username, Postcontent, DatePosted) values(?, ?, ?, ?)';
+        DB::INSERT($sql, array($postTitle, $username, $postContent, $date));
+        return back();
     }
 
     /**
@@ -45,7 +54,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        dd('test show');
+        dd($id);
     }
 
     /**
@@ -56,7 +65,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sql = 'SELECT * FROM Posts WHERE PostID = ?';
+        $post = DB::SELECT($sql, array($id));
+        return view('general.edit', compact('post'));
     }
 
     /**
@@ -68,7 +79,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd('test update');
     }
 
     /**

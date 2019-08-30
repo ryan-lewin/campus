@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('/', 'PostsController');
+Route::resource('Posts', 'PostsController');
 
 Route::get('/users', 'ViewsController@users');
 

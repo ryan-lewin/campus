@@ -9,11 +9,28 @@
 </head>
 <body>
     <header>
-        <ul>
-            <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('users')}}">Users</a></li>
-            <li><a href="{{ url('recent')}}">Recent Posts</a></li>
-        </ul>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item title" href="#">
+                Campus
+                </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                <a href="{{ url('Posts') }}" class="navbar-item">Home</a>
+                <a href="{{ url('users')}}" class="navbar-item">Users</a>
+                <a href="{{ url('recent')}}" class="navbar-item">Recent Posts</a>
+                </div>
+                <div class="navbar-end">
+                    <a class="navbar-item">About</a>
+                </div>
+            </div>
+            </nav>
     </header>
     @yield('content')
 </body>
