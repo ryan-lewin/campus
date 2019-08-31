@@ -83,11 +83,12 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $PostID = $id;
         $PostTitle = request('PostTitle');
         $PostContent = request('PostContent');
         $sql = 'UPDATE Posts SET PostTitle = ?, PostContent = ? WHERE PostID = ?';
         DB::UPDATE($sql, array($PostTitle, $PostContent, $id));
-        return redirect()->action('PostsController@index');
+        return redirect()->action('PostsController@show', compact('PostID'));
     }
 
     /**
