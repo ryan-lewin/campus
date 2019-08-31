@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -34,8 +35,15 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Username = request('Username');
+        $CommentContent = request('CommentContent');
+        $DatePosted = date('d-m-y');
+        $PostID = request('PostID');
+        $sql = 'INSERT INTO Comments(Username, CommentContent, DatePosted, PostID) VALUES(?, ?, ?, ?)';
+        DB::INSERT($sql, array($Username, $CommentContent, $DatePosted, $PostID));
+        return back();
     }
+ 
 
     /**
      * Display the specified resource.
@@ -45,7 +53,7 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
     }
 
     /**

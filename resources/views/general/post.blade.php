@@ -14,15 +14,16 @@
                     </div>
                 </div>
                 <footer class="card-content">
-                    <form method="POST" action="{{ url('Posts') }}" style="width:100%;">
+                    <form method="POST" action="{{ url('Comments') }}" style="width:100%;">
                         @csrf
+                        <input type="hidden" name="PostID" value="{{ $post[0]->PostID }}">
                         <div class="field">
                             <label for="Username" class="label">Username</label>
                             <input type="text" class="input" name="Username">
                         </div>
                         <div class="field">
-                            <label for="PostContent" class="label">What would you like to comment</label>
-                            <textarea name="PostContent" class="textarea" value="">Enter your message here...</textarea>
+                            <label for="CommentContent" class="label">What would you like to comment</label>
+                            <textarea name="CommentContent" class="textarea" value="">Enter your message here...</textarea>
                         </div>
                         <div class="control">
                             <button class="button is-primary">Leave Comment</button>
