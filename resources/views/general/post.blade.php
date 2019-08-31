@@ -44,7 +44,7 @@
                     </div>
                     </div>
                     <footer class="card-footer">
-                        <form class="card-footer-item" method='POST' action="">
+                        <form class="card-footer-item" method='POST' action="{{ url('Comments', $comment->CommentID) }}">
                             @csrf
                             @method('DELETE')
                             <button>Delete</button>

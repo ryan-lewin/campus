@@ -14,9 +14,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $sql = 'SELECT * FROM Posts';
+        $sql = 'SELECT * FROM Posts ORDER BY DatePosted DESC';
         $posts = DB::SELECT($sql);
-        return view('general.home', compact('posts'));
+        $sqlComments = 'SELECT * FROM Comments';
+        $comments = DB::SELECT($sqlComments);
+        return view('general.home', compact('posts', 'comments'));
     }
 
     /**
@@ -55,7 +57,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $sqlPost = 'SELECT * FROM Posts WHERE PostID = ?';        
-        $sqlComments = 'SELECT * FROM Comments WHERE PostID = ?';
+        $sqlComments = 'SELECT * FROM Comments WHERE PostID = ? ORDER BY DatePosted DESC';
         $post = DB::SELECT($sqlPost, array($id));
         $comments = DB::SELECT($sqlComments, array($id));        
         return view('general.post', compact('post', 'comments'));

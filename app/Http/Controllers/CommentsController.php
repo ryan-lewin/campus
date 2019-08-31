@@ -87,6 +87,8 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sql = 'DELETE FROM Comments WHERE CommentID = ?';
+        DB::DELETE($sql, array($id));
+        return back();
     }
 }

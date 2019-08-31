@@ -19,4 +19,6 @@ Route::resource('Posts', 'PostsController');
 
 Route::get('/users', 'ViewsController@users');
 
+Route::get('/user/{username}', 'ViewsController@user');
+
 Route::get('/recent', 'ViewsController@recent');
