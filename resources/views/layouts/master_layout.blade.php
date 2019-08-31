@@ -22,7 +22,7 @@
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                <a href="{{ url('Posts') }}" class="navbar-item">Home</a>
+                <a href="{{ url('/') }}" class="navbar-item">Home</a>
                 <a href="{{ url('users')}}" class="navbar-item">Users</a>
                 <a href="{{ url('recent')}}" class="navbar-item">Recent Posts</a>
                 </div>

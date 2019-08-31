@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', 'PostsController@index');
+
+Route::resource('Comments', 'CommentsController');
+
 Route::resource('Posts', 'PostsController');
 
 Route::get('/users', 'ViewsController@users');

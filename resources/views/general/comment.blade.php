@@ -6,13 +6,8 @@
     <div class="container">
         <h2 class="title">Edit Post</h2>
         <div>
-            <form method="POST" action="{{ url('Posts', $post[0]->PostID) }}" style="width:30vw;">
+            <form method="POST" action="">
                 @csrf
-                @method('PATCH')
-                <div class="field">
-                    <label for="PostTitle" class="label">Title</label>
-                    <input type="text" class="input" name="PostTitle" value="{{ $post[0]->PostTitle }}">
-                </div>
                 <div class="field">
                     <label for="Username" class="label">Username</label>
                     <input type="text" class="input" name="Username" value="{{ $post[0]->Username }}">

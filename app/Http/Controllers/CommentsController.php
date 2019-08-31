@@ -13,7 +13,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        dd('test index');
     }
 
     /**
@@ -21,9 +21,9 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($postID)
     {
-        //
+        dd('test create');
     }
 
     /**

@@ -54,7 +54,11 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        $sqlPost = 'SELECT * FROM Posts WHERE PostID = ?';        
+        $sqlComments = 'SELECT * FROM Comments WHERE PostID = ?';
+        $post = DB::SELECT($sqlPost, array($id));
+        $comments = DB::SELECT($sqlComments, array($id));        
+        return view('general.post', compact('post', 'comments'));
     }
 
     /**
@@ -79,7 +83,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('test update');
+        $PostTitle = request('PostTitle');
+        $PostContent = request('PostContent');
+        $sql = 'UPDATE Posts SET PostTitle = ?, PostContent = ? WHERE PostID = ?';
+        DB::UPDATE($sql, array($PostTitle, $PostContent, $id));
+        return redirect()->action('PostsController@index');
     }
 
     /**
@@ -90,6 +98,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sqlComments = 'DELETE FROM Comments WHERE PostID = ?';
+        $sqlPosts = 'DELETE FROM Posts WHERE PostID = ?';
+        DB::DELETE($sqlComments, array($id));
+        DB::DELETE($sqlPosts, array($id));
+        return redirect()->action('PostsController@index');
     }
 }

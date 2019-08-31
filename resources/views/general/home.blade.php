@@ -33,7 +33,8 @@
             @foreach ($posts as $post)
                 <div class="card">
                     <header class="card-header">
-                    <p class="card-header-title">{{ $post->PostTitle }}</p>
+                        <a href="/Posts/{{$post->PostID}}" class="card-header-title">{{ $post->PostTitle }}</a>
+                        {{-- <p class="card-header-title">{{ $post->PostTitle }}</p> --}}
                     </header>
                     <div class="card-content">
                     <div class="content">
@@ -43,11 +44,17 @@
                     </div>
                     </div>
                     <footer class="card-footer">
-                    <a href="/Posts/{{$post->PostID}}/edit" class="card-footer-item">Edit</a>
-                    <a href="#" class="card-footer-item">Delete</a>
+                        <a href="/Posts/{{$post->PostID}}/edit" class="card-footer-item">Edit</a>
+                        <a href="/Posts/{{$post->PostID}}" class="card-footer-item">Comment</a>
+                        <form class="card-footer-item" method='POST' action="{{ url('Posts', $post->PostID) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button>Delete</button>
+                        </form>
                     </footer>
                 </div>
             @endforeach
         </div>
     </div>
 @endsection
+
