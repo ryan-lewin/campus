@@ -1,11 +1,11 @@
+header{
+    margin-bottom: 4em;
+}
+
 .sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 9em;
-}
-
-header{
-    margin-bottom: 4em;
 }
 
 .columns {

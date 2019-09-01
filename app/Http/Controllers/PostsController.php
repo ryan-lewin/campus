@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $sql = 'SELECT * FROM Posts ORDER BY DatePosted DESC';
+        $sql = 'SELECT * FROM Posts ORDER BY PostID DESC';
         $posts = DB::SELECT($sql);
         $sqlComments = 'SELECT * FROM Comments';
         $comments = DB::SELECT($sqlComments);
