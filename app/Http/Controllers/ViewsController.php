@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ViewsController extends Controller
 {
+    /**
+     * Returns view with posts from last 7 days
+     * returns recent view
+     */
     public function recent()
     {
         $date = date('d-m-y', strtotime('-7 days'));
@@ -17,6 +21,10 @@ class ViewsController extends Controller
         return view('general.recent', compact('posts', 'comments'));
     }
 
+    /**
+     * Loads users view with all distinct users
+     * returns users view
+     */
     public function users()
     {
         $sql = 'SELECT DISTINCT Username FROM Posts ORDER BY UPPER(Username) ASC';
@@ -24,7 +32,12 @@ class ViewsController extends Controller
         return view('general.users', compact('users'));
     }
 
-    public function user($username)
+    /**
+     * Loads user view with all posts made by that user
+     * @param str $username
+     * returns user view 
+     */
+    public function user(string $username)
     {
         $sql = 'SELECT * FROM Posts WHERE Username = ? ORDER BY DatePosted DESC';
         $posts = DB::SELECT($sql, array($username));

@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Loads the home view with posts and comments
+     * @returns home view
      */
     public function index()
     {
@@ -22,20 +21,9 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        dd('test create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Stores new posts to the DB
+     * @param Request $request
+     * returns back
      */
     public function store(Request $request)
     {
@@ -54,12 +42,11 @@ class PostsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Loads post view with comments attached to that post
+     * @param int $id
+     * returns post view
      */
-    public function show($id)
+    public function show(int $id)
     {
         $sqlPost = 'SELECT * FROM Posts WHERE PostID = ?';        
         $sqlComments = 'SELECT * FROM Comments WHERE PostID = ? ORDER BY DatePosted DESC';
@@ -69,12 +56,11 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Loads edit view with post selected
+     * @param int $id
+     * returns edit
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $sql = 'SELECT * FROM Posts WHERE PostID = ?';
         $post = DB::SELECT($sql, array($id));
@@ -82,13 +68,12 @@ class PostsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Updates post in DB with user input
+     * @param Request $request
+     * @param int $id
+     * returns post view via show route
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         request()->validate([
             'PostTitle' => 'required',
@@ -104,12 +89,11 @@ class PostsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Deletes selected post from DB
+     * @param int $id
+     * returns home via index route
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $sqlComments = 'DELETE FROM Comments WHERE PostID = ?';
         $sqlPosts = 'DELETE FROM Posts WHERE PostID = ?';

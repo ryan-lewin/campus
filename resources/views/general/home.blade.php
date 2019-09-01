@@ -1,4 +1,3 @@
-{{-- {{dd($posts)}} --}}
 @extends('layouts.master_layout')
 
 @section('title', 'Campus - Your place to share')
