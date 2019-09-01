@@ -21,8 +21,8 @@
             <hr>
             <h2 class="title is-5">Form Validation and SQL Sanitisation</h2>
             <p>I used standard SQL sanitisation practices to ensure safe input before loading new data into the database. This included 
-                use of the ? wildcard. Form validation was handled both client and server side. Client side form validatin is not reliable as 
-                the source code can be ultered through the web developer tools. Using the required class I was able to hadle this issue.
+                use of the ? wildcard. Form validation was handled both client and server side. Client side form validation is not reliable as 
+                the source code can be altered through the web developer tools. Using the required class I was able to handle this issue.
             </p>
             <hr>
         </div>
