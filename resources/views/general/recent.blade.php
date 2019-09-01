@@ -29,7 +29,7 @@
                             <p>
                                 <strong><a href="/Posts/{{$post->PostID}}" class="title is-4">{{ $post->PostTitle }}</a></strong> 
                                 <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                                {{ $post->PostContent }}
                                 <br>
                                 <strong>{{ $post->Username }}</strong>
                                 <small><time>{{ $post->DatePosted }}</time></small> 

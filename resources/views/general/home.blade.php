@@ -20,15 +20,15 @@
                         </div>
                     @endif
                     <div class="field">
-                        <label for="PostTitle" class="label">Post Title</label>
+                        <label for="PostTitle" class="label is-medium">Post Title</label>
                         <input type="text" class="input is-medium" name="PostTitle" value="{{ old('PostTitle') }}" required>
                     </div>
                     <div class="field">
-                        <label for="Username" class="label">Username</label>
+                        <label for="Username" class="label is-medium">Username</label>
                         <input type="text" class="input is-medium" name="Username" value="{{ old('Username') }}" required>
                     </div>
                     <div class="field">
-                        <label for="PostContent" class="label">What would you like to share</label>
+                        <label for="PostContent" class="label is-medium">What would you like to share</label>
                         <textarea name="PostContent" class="textarea" rows="8" required>{{ old('PostContent') }}</textarea>
                     </div>
                     <div class="control">
@@ -63,7 +63,7 @@
                                 <br>
                                 {{ $post->PostContent }}
                                 <br>
-                                <strong>{{ $post->Username }}</strong>
+                                <strong><a href="{{ url('user', $post->Username) }}"> {{ $post->Username }}</a></strong>
                                 <small><time>{{ $post->DatePosted }}</time></small> 
                             </p>
                         </div>

@@ -18,7 +18,7 @@
                                 <br>
                                 {{ $post[0]->PostContent }}
                                 <br>
-                                <strong>{{ $post[0]->Username }}</strong>
+                                <strong><a href="{{ url('user', $post[0]->Username) }}"> {{ $post[0]->Username }}</a></strong>
                                 <small><time>{{ $post[0]->DatePosted }}</time></small> 
                             </p>
                         </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="field">
                             <label for="CommentContent" class="label is-medium">What would you like to comment</label>
-                            <textarea name="CommentContent" class="textarea is-medium" rows="4" required>{{ old('CommentContent') }}</textarea>
+                            <textarea name="CommentContent" class="textarea is-medium" rows="3" required>{{ old('CommentContent') }}</textarea>
                         </div>
                         <div class="control">
                             <button class="button is-primary is-medium">Leave Comment</button>
