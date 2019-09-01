@@ -19,7 +19,7 @@ class ViewsController extends Controller
 
     public function users()
     {
-        $sql = 'SELECT DISTINCT Username FROM Posts ORDER BY Username ASC';
+        $sql = 'SELECT DISTINCT Username FROM Posts ORDER BY UPPER(Username) ASC';
         $users = DB::SELECT($sql);
         return view('general.users', compact('users'));
     }

@@ -10,17 +10,26 @@
             <div>
                 <form method="POST" action="{{ url('Posts') }}" style="width:30vw;">
                     @csrf
+                    @if ($errors->any())                        
+                        <div class="notification is-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="field">
-                        <label for="PostTitle" class="label">Title</label>
-                        <input type="text" class="input" name="PostTitle">
+                        <label for="PostTitle" class="label">Post Title</label>
+                        <input type="text" class="input" name="PostTitle" value="{{ old('PostTitle') }}" required>
                     </div>
                     <div class="field">
                         <label for="Username" class="label">Username</label>
-                        <input type="text" class="input" name="Username">
+                        <input type="text" class="input" name="Username" value="{{ old('Username') }}" required>
                     </div>
                     <div class="field">
                         <label for="PostContent" class="label">What would you like to share</label>
-                        <textarea name="PostContent" class="textarea">Enter your message here...</textarea>
+                        <textarea name="PostContent" class="textarea" required>{{ old('PostContent') }}</textarea>
                     </div>
                     <div class="control">
                         <button class="button is-primary">Submit</button>

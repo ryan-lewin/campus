@@ -35,6 +35,10 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'Username' => 'required',
+            'CommentContent' => 'required'
+        ]);
         $Username = request('Username');
         $CommentContent = request('CommentContent');
         $DatePosted = date('d-m-y');

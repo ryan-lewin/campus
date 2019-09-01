@@ -39,10 +39,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'PostTitle' => 'required',
+            'Username' => 'required',
+            'PostContent' => 'required'
+        ]);
         $postTitle = request('PostTitle');
         $username = request('Username');
         $postContent = request('PostContent');
-        $date = date('d-m-y');
+        $date = date('d/m/y');
         $sql = 'INSERT INTO Posts(PostTitle, Username, Postcontent, DatePosted) values(?, ?, ?, ?)';
         DB::INSERT($sql, array($postTitle, $username, $postContent, $date));
         return back();
@@ -85,6 +90,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'PostTitle' => 'required',
+            'Username' => 'required',
+            'PostContent' => 'required'
+        ]);
         $PostID = $id;
         $PostTitle = request('PostTitle');
         $PostContent = request('PostContent');

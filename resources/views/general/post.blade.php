@@ -16,14 +16,23 @@
                 <footer class="card-content">
                     <form method="POST" action="{{ url('Comments') }}" style="width:100%;">
                         @csrf
+                        @if ($errors->any())                        
+                            <div class="notification is-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <input type="hidden" name="PostID" value="{{ $post[0]->PostID }}">
                         <div class="field">
                             <label for="Username" class="label">Username</label>
-                            <input type="text" class="input" name="Username">
+                            <input type="text" class="input" name="Username" value="{{ old('Username') }}" required>
                         </div>
                         <div class="field">
                             <label for="CommentContent" class="label">What would you like to comment</label>
-                            <textarea name="CommentContent" class="textarea" value="">Enter your message here...</textarea>
+                            <textarea name="CommentContent" class="textarea" required>{{ old('CommentContent') }}</textarea>
                         </div>
                         <div class="control">
                             <button class="button is-primary">Leave Comment</button>
