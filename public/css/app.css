@@ -2,6 +2,10 @@ header{
     margin-bottom: 4em;
 }
 
+body {
+    margin-bottom: 2em;
+}
+
 .sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -19,3 +23,5 @@ header{
 .navbar a {
     margin-right: 1em;
 }
+
+

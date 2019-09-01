@@ -22,3 +22,6 @@ Route::get('/users', 'ViewsController@users');
 Route::get('/user/{username}', 'ViewsController@user');
 
 Route::get('/recent', 'ViewsController@recent');
+
+Route::get('/about', 'ViewsController@about');
+

@@ -45,5 +45,10 @@ class ViewsController extends Controller
         $comments = DB::SELECT($sqlComments);
         return view('general.user', compact('posts', 'comments'));
     }
+
+    public function about()
+    {
+        return view('general.about');
+    }
 }
 
